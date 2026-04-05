@@ -1,0 +1,35 @@
+name: Bilibili Scraper
+
+on:
+  schedule:
+    # 每 70 分钟运行一次 (Cron 表达式)
+    - cron: '*/70 * * * *'
+  workflow_dispatch: # 支持手动触发
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.9'
+
+      - name: Install dependencies
+        run: pip install requests pandas
+
+      - name: Run Scraper
+        env:
+          PUSH_KEY: ${{ secrets.PUSH_KEY }} # 手机监控的 API Key
+        run: python scraper.py
+
+      - name: Commit and Push
+        run: |
+          git config --global user.name "GitHub Action"
+          git config --global user.email "action@github.com"
+          git add data.csv
+          git commit -m "Update Bili Data $(date)" || exit 0
+          git push
