@@ -1,35 +1,39 @@
-name: Bilibili Scraper
+name: Bili Auto Scraper
 
 on:
   schedule:
-    # 每 70 分钟运行一次 (Cron 表达式)
-    - cron: '*/70 * * * *'
-  workflow_dispatch: # 支持手动触发
+    - cron: '0 * * * *'  # 每小时自动运行一次
+  workflow_dispatch:      # 允许手动点击 Run workflow 按钮
+
+permissions:
+  contents: write         # 显式声明：这台临时电脑有权写入你的仓库
 
 jobs:
   build:
     runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+    - name: Checkout code
+      uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
+    - name: Set up Python
+      uses: actions/checkout@v4  # 再次确认代码拉取
+      with:
+        persist-credentials: true
 
-      - name: Install dependencies
-        run: pip install requests pandas
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests pandas
 
-      - name: Run Scraper
-        env:
-          PUSH_KEY: ${{ secrets.PUSH_KEY }} # 手机监控的 API Key
-        run: python scraper.py
+    - name: Run Scraper
+      run: python scraper.py  # 这里运行你的脚本，生成 index.html
 
-      - name: Commit and Push
-        run: |
-          git config --global user.name "GitHub Action"
-          git config --global user.email "action@github.com"
-          git add data.csv
-          git commit -m "Update Bili Data $(date)" || exit 0
-          git push
+    - name: Commit and Push
+      run: |
+        git config --local user.email "action@github.com"
+        git config --local user.name "GitHub Action"
+        git add -A  # 把所有生成的新文件（index.html, data.csv）都抓起来
+        # 强制提交，即使没有变化也不会报错
+        git commit -m "Update Bili Data $(date -d '8 hours' +'%Y-%m-%d %H:%M:%S')" || echo "No changes to commit"
+        git push origin main
