@@ -1,0 +1,350 @@
+
+    <!DOCTYPE html>
+    <html lang="zh-CN">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+        <meta http-equiv="refresh" content="600">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <title>Bili Monitor Pro</title>
+        <style>
+            :root { 
+                --bg: #121212; 
+                --card-bg: #1E1E1E; 
+                --bili-blue: #00A1D6; 
+                --text-main: #E0E0E0; 
+                --text-sub: #A0A0A0; 
+                --border: #333;
+            }
+            body { 
+                background: var(--bg); color: var(--text-main); 
+                margin: 0; padding: 0; 
+                font-family: -apple-system, "SF Pro Text", "Helvetica Neue", sans-serif; 
+                -webkit-font-smoothing: antialiased;
+            }
+            .header { 
+                position: sticky; top: 0; 
+                background: rgba(18, 18, 18, 0.7);
+                backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+                padding: 15px; text-align: center;
+                border-bottom: 1px solid var(--border); z-index: 100;
+                padding-top: calc(15px + env(safe-area-inset-top)); 
+            }
+            .header h2 { margin: 0; font-size: 16px; font-weight: 700; color: #fff; letter-spacing: 0.5px; }
+            
+            /* 顶部同步时间：17px */
+            .header p { margin: 6px 0 0; font-size: 17px; color: var(--text-sub); text-transform: uppercase; letter-spacing: 1px; }
+            
+            .container { padding: 12px; max-width: 600px; margin: 0 auto; padding-bottom: calc(12px + env(safe-area-inset-bottom)); }
+            .card { background: var(--card-bg); border-radius: 12px; margin-bottom: 12px; border: 1px solid var(--border); transition: background 0.2s; }
+            .card:active { background: #252525; }
+            .card-body { padding: 16px; }
+            
+            /* 标题：19px 粗体 */
+            .title { font-size: 19px; font-weight: 700; color: var(--text-main); line-height: 1.5; margin-bottom: 12px; }
+            
+            .stats { display: flex; gap: 15px; }
+            .stat-item { font-size: 14px; color: var(--text-sub); display: flex; align-items: center; background: rgba(255,255,255,0.05); padding: 4px 8px; border-radius: 4px; }
+            .icon { margin-right: 5px; opacity: 0.7; font-size: 10px; }
+            .card-footer { display: flex; justify-content: space-between; align-items: center; padding: 10px 16px; border-top: 1px solid var(--border); background: rgba(0,0,0,0.1); border-radius: 0 0 12px 12px; }
+            
+            /* 卡片时间：17px */
+            .time { font-size: 17px; color: #888; font-family: "Courier New", monospace; }
+            
+            /* 按钮：微调 padding 让它在 17px 字体旁不显瘦小 */
+            .btn { background: transparent; color: var(--bili-blue); text-decoration: none; padding: 8px 18px; border-radius: 6px; font-size: 13px; font-weight: 800; border: 1px solid var(--bili-blue); letter-spacing: 1px; transition: all 0.2s; }
+            .btn:active { background: var(--bili-blue); color: #fff; }
+        </style>
+    </head>
+    <body>
+        <div class="header">
+            <h2>Bili Monitor Pro</h2>
+            <p>Synced: 04-05 17:13</p>
+        </div>
+        <div class="container">
+            
+        <div class="card">
+            <div class="card-body">
+                <div class="title">『教程』一看就懂！Github基础教程</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 342.7万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 偶尔有点小迷糊</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1hS4y1S7wL" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">🙃学生会使绊，军训吃泔水，辅导员罚抄，我选择对抗！！！</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 286.3万</span>
+                    <span class="stat-item"><span class="icon">👤</span> Git源宝</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1nW4y1b7rV" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">🐔起底蔡徐坤，为什么见不到真ikun？</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 260.7万</span>
+                    <span class="stat-item"><span class="icon">👤</span> Git源宝</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1iG411h729" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">我宣布向量数据库才是查询鲁迅说没说的最优解法</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 254.1万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 阿威日记_</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1ZmBQYjEea" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">【Github】使用指南</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 210.5万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 云影同学yunyuv</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1Wz4y1M7Jc" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">【狂神说Java】Git最新教程通俗易懂</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 187.7万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 遇见狂神说</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1FE411P7B3" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">全世界最强的网站，但是你根本不会用？</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 167.1万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 玄离199</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1uQ4y1n7pi" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">这个星球最好用的网站，普通人如何用好GitHub？</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 166.0万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 李大可爱玩</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1m4GhzEER3" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">这应该是全球最强的资源网站了..... 一个视频玩转Github！！！</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 157.0万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 小宇Boi</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1Ys421T7x8" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">『教程』手把手教你流畅访问Github</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 156.1万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 偶尔有点小迷糊</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1Aq4y1q7hr" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">黑客那么厉害，为什么不攻击支付宝，让自己一夜暴富？</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 102.0万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 一个学安全的</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1qu4y1w7cX" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">网络安全/Kali渗透测试教程/kali/Linux/黑客/web安全/信息安全/白帽黑客</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 75.9万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 学神科技</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1Kt411u73T" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">黑客怎么忍得住不攻击，上亿流水的赌博网站？（网络安全/黑客技术）</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 53.9万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 码农的黑客视界</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1ESvkePEg7" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">“白帽黑客”1秒破解iPhone13 Pro，获30万美元奖金</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 40.1万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 老板联播</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1MF411e7BB" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">白帽黑客VS黑帽黑客，哪种黑客收入最高？（网络安全/黑客技术）</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 31.3万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 黑客七七_</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1rFJJzXEtm" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">如果你在未授权的情况下发现了漏洞，你会上报吗？</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 30.7万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 黑客Lion</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1VNhhzuEeJ" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">白帽黑客是如何在工作中爆破出目标信息的？kali九头蛇Hydra你值得拥有。</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 26.9万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 老邪讲网络安全</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1Vg411e7vK" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">护网日薪2700？苕皮哥帮大家试过了，是真的“刑”！</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 26.1万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 白帽黑客无涯</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1Sj411q7dE" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">胡塞老弟竟然黑了美GPS系统，随意控制MQ-9无人机做仰卧起坐！！！</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 22.4万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 白帽黑客霖霖</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1i6421Z7uU" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        <div class="card">
+            <div class="card-body">
+                <div class="title">美国破防了！全球悬赏1000万美元，通缉中国顶级黑客！</div>
+                <div class="stats">
+                    <span class="stat-item"><span class="icon">📈</span> 22.1万</span>
+                    <span class="stat-item"><span class="icon">👤</span> 白帽黑客无涯</span>
+                </div>
+            </div>
+            <div class="card-footer">
+                <span class="time">⏰ 04-05 17:13</span>
+                <a href="https://www.bilibili.com/video/BV1z9cnenEEi" class="btn">WATCH</a>
+            </div>
+        </div>
+        
+        </div>
+    </body>
+    </html>
+    
